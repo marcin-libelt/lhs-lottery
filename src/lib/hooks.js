@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fakeFetch, compareNumbers } from "./utils";
+import { fakeFetch, calculateMatchedNumbers } from "./utils";
 import { LOTTER_PRIZE_MAP } from "./constants";
 
 export function useFetchData() {
@@ -17,7 +17,7 @@ export function useFetchData() {
 export function usePrizeSum(lotteryNumbers, participants) {
   return participants.reduce((accu, curr) => {
     const prizeValue = LOTTER_PRIZE_MAP.get(
-      compareNumbers(curr.numbers, lotteryNumbers)
+      calculateMatchedNumbers(curr.numbers, lotteryNumbers).length
     );
 
     if (prizeValue) {

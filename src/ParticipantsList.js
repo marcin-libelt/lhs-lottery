@@ -1,5 +1,5 @@
 import React from "react";
-import { compareNumbers } from "./lib/utils";
+import { calculateMatchedNumbers } from "./lib/utils";
 
 export default function ParticipantsList({ children, participants, numbers }) {
   const css = {
@@ -37,7 +37,7 @@ function Participant({ person, lotteryNumbers }) {
     numbers,
   } = person;
 
-  const matchedCount = compareNumbers(numbers, lotteryNumbers);
+  const matchedNumbers = calculateMatchedNumbers(numbers, lotteryNumbers);
 
   const css = {
     item: {
@@ -49,13 +49,40 @@ function Participant({ person, lotteryNumbers }) {
       borderRadius: "10px",
     },
     winner: { color: "green" },
+    number: {
+      width: "25px",
+      height: "25px",
+      lineHeight: "25px",
+      textAlign: "center",
+      borderRadius: "20px",
+      backgroundColor: "#ededed",
+    },
+    numbers: {
+      display: "flex",
+      gap: "8px",
+    },
   };
 
   return (
     <div style={css.item}>
       <h3>{`${firstName} ${lastName}`}</h3>
-      <div>{numbers.join(" - ")}</div>
-      {matchedCount === 6 && <div style={css.winner}>{email}</div>}
+      <div style={css.numbers}>
+        {numbers.map((num) => {
+          return (
+            <div
+              style={{
+                ...css.number,
+                backgroundColor: matchedNumbers.includes(num)
+                  ? "#ffe16e"
+                  : "#ededed",
+              }}
+            >
+              {num}
+            </div>
+          );
+        })}
+      </div>
+      {matchedNumbers.length === 6 && <div style={css.winner}>{email}</div>}
     </div>
   );
 }

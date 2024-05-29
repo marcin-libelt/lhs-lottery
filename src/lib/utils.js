@@ -30,8 +30,8 @@ export const fakeFetch = () => {
   });
 };
 
-export const compareNumbers = (a, b) => {
+export const calculateMatchedNumbers = (a, b) => {
   const setA = new Set(a);
   const setB = new Set(b);
-  return setA.intersection(setB).size;
+  return Array.from(setA.intersection(setB));
 };
