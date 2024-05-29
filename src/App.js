@@ -8,7 +8,7 @@ import { NUMBERS_LENGTH } from "./lib/constants";
 
 /** Zadanie 2 - 1h8m */
 /** Zadanie 3 - 52m */
-/** Stylowanie - */
+/** Stylowanie ~30m */
 
 export default function App() {
   const [numbers, setNumbers] = useState(() =>
@@ -37,7 +37,7 @@ export default function App() {
   return (
     <div style={css.app}>
       <header style={css.header}>
-        <h1>Lufthansa Lottery</h1>
+        <h1>LH Lottery</h1>
       </header>
       <main>
         <ManagerInput setNumbers={setNumbers} />
