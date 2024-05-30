@@ -67,9 +67,10 @@ function Participant({ person, lotteryNumbers }) {
     <div style={css.item}>
       <h3>{`${firstName} ${lastName}`}</h3>
       <div style={css.numbers}>
-        {numbers.map((num) => {
+        {numbers.map((num, index) => {
           return (
             <div
+              key={index}
               style={{
                 ...css.number,
                 backgroundColor: matchedNumbers.includes(num)
